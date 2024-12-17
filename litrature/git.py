@@ -71,6 +71,10 @@ Set Up Your Username and Email:
 sh
 git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
+
+
+git config --global user.name "adilnaseem"
+git config --global user.email "adilnaseempk@yahoo.com"
 Check Configuration:
 
 sh

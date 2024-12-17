@@ -1,0 +1,63 @@
+<html>
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+<head>
+</head>
+<body>
+    {% block content %}
+    <div class="flex justify-center">
+        <div class="table-auto border-collapse border border-gray-300 p-3">
+            <h3 class="text-lg font-semibold">Equipment Details</h3>
+            <table class="min-w-full divide-y divide-gray-200">
+                {{ set.get_type_display }}
+                {% for key, value in set.items %}
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap font-bold">{{ key }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ value }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <a href="{% url 'equipment_update' pk %}" class="text-blue-500 hover:underline">Edit</a>
+            <form action="{% url 'equipment_delete' pk %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+            </form>
+        </div>
+    </div>
+    {% endblock content %}
+    <div class="table-auto border-collapse border border-gray-300 p-3">
+        <h3 class="text-lg font-semibold">Repair History - {{ set.id }}</h3>
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sr. No</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Equipment</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Staff Involved</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in lis %}
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ forloop.counter }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ x.title }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ x.equipment__title }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            {% for y in x.staff %}
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ y.staff__force_no }} - {{ y.staff__name }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ x.description }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

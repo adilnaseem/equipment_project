@@ -1,0 +1,49 @@
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+<!-- data_entry_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Entry Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-5">
+        <section class="bg-white shadow-md rounded-lg p-6">
+            <div class="text-center mb-6">
+                <h1 class="text-2xl font-bold">Add New Equipment Details</h1>
+            </div>
+            <form method="post" class="space-y-4">
+                {% csrf_token %}
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200">
+                        {% for field in form %}
+                        <tr class="border-b">
+                            <td class="py-2 px-4 text-right font-medium">{{ field.label_tag }}</td>
+                            <td class="py-2 px-4">
+                                {{ field.errors }}
+                                <span class="bg-blue-500">
+                                    {{ field }}
+                                </span>
+                                {% if field.help_text %}
+                                <p class="text-sm text-gray-500" id="{{ field.auto_id }}_helptext">
+                                    {{ field.help_text|safe }}
+                                </p>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                <div class="flex justify-center">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</body>
+</html>

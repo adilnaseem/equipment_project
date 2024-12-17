@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .chart-container {
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+            max-height: 600px;
+            margin: 0 auto;
+        }
+        #chart_donut:hover, #chart_bar:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    {% include 'navbar.html' %}
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-5">
+        <div id="" class="chart-container bg-white shadow-md rounded-lg p-5"></div>
+        <div id="chart_donut" class=" chart-container bg-white shadow-md rounded-lg p-5"></div>
+        <div id="chart_bar" class="chart-container bg-white shadow-md rounded-lg p-5 "></div>
+        <div class="grid grid-cols-subgrid gap-4 md:col-span-3"></div>
+            <!-- <div id="" class="chart-container bg-white shadow-md rounded-lg p-5"></div> -->
+
+            <div id="chart_donut_hand" class="col-start-2 chart-container bg-white shadow-md rounded-lg p-5 grid-cols-subgrid"></div>
+            <div id="chart_donut_hold" class="chart-container bg-white shadow-md rounded-lg p-5"></div>
+        
+        </div>
+    </div>
+
+    <script>
+        var donutOptions = {
+            series: {{ values|safe }},
+            chart: {
+                type: 'donut',
+                height: 400
+            },
+            title: {
+                text: 'Status of Machines',
+                align: 'left',
+                style: {
+                    fontSize: '20px',
+                    fontWeight: 'bold',
+                    color: '#263238'
+                }
+            },
+            colors: ["#3C50E0", "#6577F3", "#8FD0EF", "#0FADCF"],
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: "55%",
+                        background: "transparent",
+                    }
+                }
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['#E5E4E2', '#B2BEB5']
+            },
+            states: {
+                hover: {
+                    filter: {
+                        type: 'lighten',
+                        value: 0.1
+                    }
+                }
+            },
+            labels: {{ categories|safe }},
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 300
+                    },
+                    legend: {
+                        position: 'bottom',
+                        horizontalAlign: 'center',
+                        
+                    }
+                }
+            }]
+        };
+
+        var HanddonutOptions = {
+            series: {{ hand_values|safe }},
+            chart: {
+                type: 'donut',
+                height: 400
+            },
+            title: {
+                text: 'Status of Hand Baggage X-Ray Machines',
+                align: 'left',
+                style: {
+                    fontSize: '20px',
+                    fontWeight: 'bold',
+                    color: '#263238'
+                }
+            },
+            colors: ["#8FD0EF", "#0FADCF","#3C50E0", "#6577F3", ],
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: "55%",
+                        background: "transparent"
+                    }
+                }
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['#E5E4E2', '#B2BEB5']
+            },
+            states: {
+                hover: {
+                    filter: {
+                        type: 'lighten',
+                        value: 0.1
+                    }
+                }
+            },
+            labels: {{ hand_categories|safe }},
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 300
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+        var HolddonutOptions = {
+            series: {{ hold_values|safe }},
+            chart: {
+                type: 'donut',
+                height: 400
+            },
+            title: {
+                text: 'Status of Hold Baggage X-ray Machines',
+                align: 'left',
+                style: {
+                    fontSize: '20px',
+                    fontWeight: 'bold',
+                    color: '#263238'
+                }
+            },
+            colors: ["#8FD0EF","#0FADCF","#3C50E0", "#6577F3", ],
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: "55%",
+                        background: "transparent"
+                    }
+                }
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['#E5E4E2', '#B2BEB5']
+            },
+            states: {
+                hover: {
+                    filter: {
+                        type: 'lighten',
+                        value: 0.1
+                    }
+                }
+            },
+            labels: {{ hold_categories|safe }},
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 300
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var barOptions = {
+            series: [{
+                data: {{ model_values|safe }}
+            }],
+            chart: {
+                type: 'bar',
+                height: 400
+            },
+            title: {
+                text: 'Model wise distribution of Machines',
+                align: 'center',
+                style: {
+                    fontSize: '20px',
+                    fontWeight: 'bold',
+                    color: '#263238'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 4,
+                    horizontal: false
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            xaxis: {
+                categories: {{ model_categories|safe }}
+            },
+            stroke: {
+                show: true,
+                width: 2,
+                colors: ['#fff']
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 300
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var donutChart = new ApexCharts(document.querySelector("#chart_donut"), donutOptions);
+        donutChart.render();
+
+        var barChart = new ApexCharts(document.querySelector("#chart_bar"), barOptions);
+        barChart.render();
+        var HanddonutChart = new ApexCharts(document.querySelector("#chart_donut_hand"), HanddonutOptions);
+        HanddonutChart.render();
+        var HolddonutChart = new ApexCharts(document.querySelector("#chart_donut_hold"), HolddonutOptions);
+        HolddonutChart.render();
+        
+    </script>
+</body>
+</html>

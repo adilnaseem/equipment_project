@@ -1,0 +1,31 @@
+﻿Make,Made,Model,Eqpt Ser No,Type,Manufactured,Procured,Location ,Installed,STP,Status,title
+Smith Detection,Germany,6040-2is,192449,1,Oct-23,CAA,IC-1,Int’l S/C,Pass,S/A,Smith Detection 6040-2is
+Smith Detection,Germany,6040-2is,192452,1,Oct-23,CAA,IC-2,Int’l S/C,Pass,S/A,Smith Detection 6040-2is
+Smith Detection,Germany,6040-2is,192451,1,Oct-23,CAA,IC-3,Int’l S/C,Pass,S/A,Smith Detection 6040-2is
+Smith Detection,Germany,6040-2is,192450,1,Oct-23,CAA,IC-5,Int’l  Adll S/C,Pass,S/A,Smith Detection 6040-2is
+Smith Hi-Scan,Germany,6040i,21304,1,Jun-01,CAA,Hajj Lounge,Hajj Gate,Pass,S/A,Smith Hi-Scan 6040i
+Smith Hi-Scan,Germany,6040i,21305,1,Jun-01,CAA,State Lounge,State Lounge,Pass,S/A,Smith Hi-Scan 6040i
+Smith Hi-Scan,Germany,6040i,72747,1,Mar-07,HQs ASF,Dom Arrival,Dom Arr Lounge,Pass,S/A,Smith Hi-Scan 6040i
+Smith Hi-Scan,Germany,6040i,72751,1,Mar-07,HQs ASF,DC-1,Dom S/C,Pass,S/A,Smith Hi-Scan 6040i
+Smith Hi-Scan,Germany,6040i,72753,1,Mar-07,HQs ASF,Transit,Transit  lounge,Pass,S/A,Smith Hi-Scan 6040i
+Smith Hi-Scan,Germany,6040i,77049,1,Feb-08,HQs ASF,Standby,Standby,Pass,S/A,Smith Hi-Scan 6040i
+Smith Hi-Scan,Germany,6040i,77051,1,Feb-08,HQs ASF,Stand by,Standby,Pass,S/A,Smith Hi-Scan 6040i
+Smith Hi-Scan,Germany,6040i,80723,1,Dec-08,HQs ASF,Standby,Standby,Pass,S/A,Smith Hi-Scan 6040i
+Smith Hi-Scan,Malaysia,6040-2is,145116,1,May-16,CAA,DC - 3,Dom S/C,Pass,S/A,Smith Hi-Scan 6040-2is
+Smith Hi-Scan,Malaysia,6040-2is,145117,1,May-16,CAA,DC-2,Dom S/C,Pass,S/A,Smith Hi-Scan 6040-2is
+Smith Hi-Scan,Malaysia,6040-2is,145123,1,May-16,CAA,IC - 6,Int’l Adl S/C,Pass,S/A,Smith Hi-Scan 6040-2is
+Smith Hi-Scan,Malaysia,6040-2is,145124,1,May-16,CAA,Standby,Standby,Pass,S/A,Smith Hi-Scan 6040-2is
+Rapiscan,Malaysia,620 DV,6150764,1,Feb-15,Bahrain,Office B II,Office B II,Pass,S/A,Rapiscan 620 DV
+Smith Detection,Germany,100100v-2is,192282,2,"Sep, 2023",CAA,FoH-1,Int’l  Hold,Pass,S/A,Smith Detection 100100v-2is
+Smith Detection,Germany,100100v-2is,192283,2,"Sep, 2023",CAA,FoH-2,Int’l  Hold,Pass,R/A,Smith Detection 100100v-2is
+Smith Detection,Germany,100100v-2is,192288,2,"Sep, 2023",CAA,FoH-3,Int’l  Hold,Pass,S/A,Smith Detection 100100v-2is
+Smith Detection,Germany,100100v-2is,192290,2,"Sep, 2023",CAA,FoH-4,Int’l  Hold,Pass,S/A,Smith Detection 100100v-2is
+Smith Detection,Germany,100100v-2is,192289,2,"Sep, 2023",CAA,FoH-5,Int’l  Hold,Pass,S/A,Smith Detection 100100v-2is
+Smith Detection,Germany,9075,21725,2,Aug-01,CAA,FoH-6,Int’l  Hold,Fail,S/A,Smith Detection 9075
+Smith Hi-Scan,Germany,9075,21726,2,Aug-01,CAA,Standby,Standby,Fail,S/A,Smith Hi-Scan 9075
+Smith Hi-Scan,Germany,9075,21787,2,Sep-01,CAA,Zero Level,Zero Level,Fail,S/A,Smith Hi-Scan 9075
+Smith Hi-Scan,Germany,100100T,124304,2,Oct-16,CAA,DH-2,Dom Hold,Pass,S/A,Smith Hi-Scan 100100T
+Smith Hi-Scan,Germany,100100V,115175,2,Oct-12,CAA,DH-1,Dom Hold,Pass,S/A,Smith Hi-Scan 100100V
+Smith Hi-Scan,Germany,100100V,115173,2,Sep-12,CAA,IH - 2,2nd Hold,Pass,S/A,Smith Hi-Scan 100100V
+Rapiscan,Malaysia,627XR,6153374,2,Aug-15,Bahrain,2nd Hold –IH 2,Standby,Pass,S/A,Rapiscan 627XR
+Rapiscan,Malaysia,928dx,6230138,2,"Jan, 2023",DFT,2nd Hold IH-1,Int’l 2nd Hold,Pass,S/A,Rapiscan 928dx

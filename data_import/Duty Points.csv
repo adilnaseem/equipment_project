@@ -1,0 +1,53 @@
+﻿sr_no,airport,call_sign,sector,duty_point
+1,1,41,40 - Int'l Departure,41 - Int Search Counter
+2,1,42,40 - Int'l Departure,42 - Int Hold Baggage
+3,1,47,40 - Int'l Departure,47 - Intl Add Hold Baggage
+4,1,49,40 - Int'l Departure,49 - Intl Add Hand Baggage
+5,1,31,31 - Domestic Departure,31 - Domestic Hand Baggage
+6,1,32,33 - Domestic Departure,32 - Dom Hold Baggage
+7,1,Transit  Lounge,40 - Int'l Departure,Transit  Lounge
+8,1,33,34 - Domestic Departure,33 - Domestic Bridge flank
+9,1,34,35 - Domestic Departure,34 - Veranda Patrolling lvl-I
+10,1,35,36 - Domestic Departure,35 - Veranda Patrolling lvl-II
+11,1,40,40 - Int'l Departure,40 - Sector Cmdr Intl Dep
+12,1,30,30 - Domestic Departure,30 - Sector Comdr Dom Dep
+13,1,43,40 - Int'l Departure,43 - Int Bridge flank
+14,1,45,40 - Int'l Departure,45 - Level-5 office block
+15,1,46,40 - Int'l Departure,46 - Sniper
+16,1,46A,40 - Int'l Departure,46A - Level-III Roof Intl Side
+17,1,46B,40 - Int'l Departure,46B - Level-III Roof Domestic Side
+18,1,48,40 - Int'l Departure,48 - Airblue Counter
+19,1,50,50 - Appron,50 - Sector Cmdr Apron
+20,1,51,50 - Appron,51 - Deployment Office
+21,1,51A,50 - Appron,51A - Domestic Arrival Airside Gate
+22,1,52,50 - Appron,52 - Cargo Gate
+23,1,53,50 - Appron,53 - Project Gate
+24,1,54,50 - Appron,54 - Masjid Gate
+25,1,55,50 - Appron,55 - PIA Gate
+26,1,56,50 - Appron,56 - Apron Comdr
+27,1,57,50 - Appron,57 - Apron Hard bay
+28,1,58,50 - Appron,58 - Dom Tower
+29,1,59,50 - Appron,59 - Int'l Tower
+30,1,10,10 - Parking,10 - Sector Comdr Car park
+31,1,11,10 - Parking,11 - Car park check post
+32,1,12,10 - Parking,12 - Pedestrian Gate
+33,1,13,10 - Parking,13 - Zero Level Entry
+34,1,14,10 - Parking,14 - Bridge Out
+35,1,15,10 - Parking,15 - Patrolling Car park
+36,1,16,10 - Parking,16 - Patrolling Car park
+37,1,17,10 - Parking,17 - New Car Park Check Post IN
+38,1,17A,10 - Parking,17A - New Car Park Check Post OUT
+39,1,18,10 - Parking,18 - Office Block Zero Level
+40,1,19,10 - Parking,19 - Zero Level Airside
+41,1,20,20 - Arrival,20 - Sector cmdr Arrivals
+42,1,21,20 - Arrival,21 - Int Arrival Entry Gate
+43,1,22,20 - Arrival,22 - Dom Arrival Entry Gate
+44,1,23,20 - Arrival,23 - Domestic Remote Gate
+45,1,24,20 - Arrival,24 - Ditch
+46,1,25,20 - Arrival,25 - Bridge In
+47,1,26,20 - Arrival,26 - Bridge Out
+48,1,Hajj Gate,Perimeter,Hajj Gate
+49,1,State Lounge,20- Arrival,State Lounge
+50,1,Office Block Lvl 2,30 - Domestic Departure,Office Block Lvl 2
+51,1,Int'l 2nd Hold ,40 - Int'l Departure,Int'l 2nd Hold 
+52,1,Domestic Lounge Reserve,30 - Domestic Departure,Domestic Lounge Reserve

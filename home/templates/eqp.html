@@ -1,0 +1,163 @@
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<html>
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+<head>
+</head>
+<body>
+    {% block content %}
+    <div class="flex justify-center">
+        <form action="{% url 'eqp' %}" method="POST" class="w-full max-w-lg">
+            {% csrf_token %}
+            <h3 class="text-lg font-medium mb-4">Search equipment within specified field:</h3>
+            <div class="mb-4">
+                <select name="field" class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                    <option selected disabled>--Select Parameter--</option>
+                    <option value="manufacturer">Manufacturer</option>
+                    <option value="made_in">Made In</option>
+                    <option value="serial_no">Serial No</option>
+                    <option value="type__title">Type</option>
+                    <option value="title">Title</option>
+                    <option value="model">Model</option>
+                    <option value="status__title">Status</option>
+     
+                    <option value="date_of_manufacturing">Date Of Manufacturing</option>
+                    <option value="place_of_installation__duty_point">Place Of Installation</option>
+                    <option value="description">Description</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <select name="pram" class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                    <option value="icontains">contains (Case-insensitive)</option>
+                    <option value="contains">contains</option>
+                    <option value="startswith">starts with</option>
+                    <option value="endswith">ends with</option>
+                    <option value="istartswith">starts with (Case-insensitive)</option>
+                    <option value="iendswith">ends with (Case-insensitive)</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <input type="text" name="query" class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+            </div>
+            <div class="flex justify-center">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="w-full h-auto p-3">
+        <form action="{% url 'eqp' %}" method="POST">
+            {% csrf_token %}
+            <select name="no_items" class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                <option selected value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </form>
+        <table class="min-w-full bg-white border border-gray-200">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b">Sr No</th>
+                    <th class="py-2 px-4 border-b">Serial No</th>
+                    <th class="py-2 px-4 border-b">Title</th>
+                    <th class="py-2 px-4 border-b">Manufacturer</th>
+                    <th class="py-2 px-4 border-b">Model</th>
+                    <th class="py-2 px-4 border-b">Made in</th>
+                    <th class="py-2 px-4 border-b">Type</th>
+                    <th class="py-2 px-4 border-b">Status</th>
+                    
+                    <th class="py-2 px-4 border-b">Manufacturing Date</th>
+                    <th class="py-2 px-4 border-b">Sector</th>
+                    <th class="py-2 px-4 border-b">Duty Point</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in page_obj %}
+                <tr>
+                    <td class="py-2 px-4 border-b">{{ forloop.counter }}</td>
+                    <td class="py-2 px-4 border-b"><a href="{% url 'details' x.id %}" class="text-blue-500 hover:underline">{{x.serial_no}}</a></td>
+                    <td class="py-2 px-4 border-b">{{x.title}}</td>
+                    <td class="py-2 px-4 border-b">{{x.manufacturer}}</td>
+                    <td class="py-2 px-4 border-b">{{x.model}}</td>
+                    <td class="py-2 px-4 border-b">{{x.made_in}}</td>
+                    <td class="py-2 px-4 border-b">{{x.type__title}}</td>
+                    
+                    <td class="py-2 px-4 border-b">
+                        <div class="flex items-center">
+                            {% if x.status__title == "Installed & SA" %}
+                                <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div>
+                            {% elif x.status__title == "Installed & Faulty" %}
+                                <div class="h-2.5 w-2.5 rounded-full bg-red-500 me-2"></div>
+                            {% elif x.status__title == "Reserve & Faulty" %}
+                                <div class="h-2.5 w-2.5 rounded-full bg-yellow-500 me-2"></div>
+                            {% elif x.status__title == "Reserve & SA" %}
+                                <div class="h-2.5 w-2.5 rounded-full bg-blue-500 me-2"></div>
+                            {% endif %}
+                            {{ x.status__title }}
+                        </div>
+                    </td>
+                   
+                    <td class="py-2 px-4 border-b">{{x.date_of_manufacturing}}</td>
+                    <td class="py-2 px-4 border-b">{{x.place_of_installation__sector}}</td>
+                    <td class="py-2 px-4 border-b">{{x.place_of_installation__duty_point}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock content %}
+    <div class="flex justify-between items-center px-4 py-3">
+    
+        <div class="flex space-x-1">
+    {% if page_obj.has_other_pages %}
+    <ul class="flex justify-center mt-4">
+        {% if page_obj.has_previous %}
+        <li class="mx-1"><a href="?page=1" class="text-blue-500 hover:underline">« first</a></li>
+        <button class="px-3 py-1 min-w-9 min-h-9 text-sm font-normal text-slate-500 bg-white border border-slate-200 rounded hover:bg-slate-50 hover:border-slate-400 transition duration-200 ease">
+            <li class="mx-1"><a href="?page={{ page_obj.previous_page_number }}" class="text-blue-500 hover:underline">Prev</a></li>
+          </button>
+        
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <li class="mx-1 font-bold">{{ num }}</li>
+        {% else %}
+        <li class="mx-1"><a href="?page={{ num }}" class="text-blue-500 hover:underline">{{ num }}</a></li>
+        {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li class="mx-1"><a href="?page={{ page_obj.next_page_number }}" class="text-blue-500 hover:underline">next</a></li>
+        <li class="mx-1"><a href="?page={{ page_obj.paginator.num_pages }}" class="text-blue-500 hover:underline">last »</a></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+    </div></div>
+</body>
+</html>
+
+
+      <button class="px-3 py-1 min-w-9 min-h-9 text-sm font-normal text-slate-500 bg-white border border-slate-200 rounded hover:bg-slate-50 hover:border-slate-400 transition duration-200 ease">
+        Prev
+      </button>
+      <button class="px-3 py-1 min-w-9 min-h-9 text-sm font-normal text-white bg-slate-800 border border-slate-800 rounded hover:bg-slate-600 hover:border-slate-600 transition duration-200 ease">
+        1
+      </button>
+      <button class="px-3 py-1 min-w-9 min-h-9 text-sm font-normal text-slate-500 bg-white border border-slate-200 rounded hover:bg-slate-50 hover:border-slate-400 transition duration-200 ease">
+        2
+      </button>
+      <button class="px-3 py-1 min-w-9 min-h-9 text-sm font-normal text-slate-500 bg-white border border-slate-200 rounded hover:bg-slate-50 hover:border-slate-400 transition duration-200 ease">
+        3
+      </button>
+      <button class="px-3 py-1 min-w-9 min-h-9 text-sm font-normal text-slate-500 bg-white border border-slate-200 rounded hover:bg-slate-50 hover:border-slate-400 transition duration-200 ease">
+        Next
+      </button>
+    </div>

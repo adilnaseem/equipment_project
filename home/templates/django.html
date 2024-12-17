@@ -1,0 +1,711 @@
+<div class="ac-container ac-adaptiveCard" style=""><div class="ac-textBlock" style=""><p>Absolutely! Here are the answers to the Django interview questions:</p>
+    <h3>Basic Questions</h3>
+    <ol>
+    <li>
+    <p><strong>What is Django?</strong></p>
+    <ul>
+    <li><strong>Django</strong> is a high-level Python web framework that encourages rapid development and clean, pragmatic design. It follows the “batteries-included” philosophy, providing a lot of built-in features like authentication, ORM, and an admin interface.</li>
+    </ul>
+    </li>
+    <li>
+    <p><strong>What are Django’s advantages?</strong></p>
+    <ul>
+    <li><strong>Advantages of Django</strong> include:
+    <ul>
+    <li><strong>Rapid Development</strong>: Django’s built-in features and tools allow for quick development.</li>
+    <li><strong>Scalability</strong>: It can handle high traffic and large volumes of data.</li>
+    <li><strong>Security</strong>: Django provides protection against common security threats like SQL injection, cross-site scripting, and cross-site request forgery.</li>
+    <li><strong>Versatility</strong>: Suitable for all types of projects, from small to large-scale applications.</li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li>
+    <p><strong>Explain Django’s MVT architecture.</strong></p>
+    <ul>
+    <li><strong>MVT (Model-View-Template)</strong> is Django’s architecture:
+    <ul>
+    <li><strong>Model</strong>: Defines the data structure.</li>
+    <li><strong>View</strong>: Handles the business logic and interacts with the model to render a response.</li>
+    <li><strong>Template</strong>: Deals with the presentation layer, rendering the HTML.</li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    </ol>
+    <h3>Intermediate Questions</h3>
+    <ol start="4">
+    <li>
+    <p><strong>How does Django handle database migrations?</strong></p>
+    <ul>
+    <li><strong>Migrations</strong> are a way to propagate changes you make to your models (adding a field, deleting a model, etc.) into your database schema. You create migrations using <code>python manage.py makemigrations</code> and apply them with <code>python manage.py migrate</code>.</li>
+    </ul>
+    </li>
+    <li>
+    <p><strong>What are Django’s ORM capabilities?</strong></p>
+    <ul>
+    <li><strong>Django ORM</strong> (Object-Relational Mapping) allows you to interact with your database using Python code instead of SQL. It provides a high-level abstraction for database access, making it easier to perform CRUD operations.</li>
+    </ul>
+    </li>
+    <li>
+    <p><strong>How do you create a Django project and app?</strong></p>
+    <ul>
+    <li>To create a project: <code>django-admin startproject projectname</code></li>
+    <li>To create an app within the project: <code>python manage.py startapp appname</code></li>
+    </ul>
+    </li>
+    </ol>
+    <h3>Advanced Questions</h3>
+    <ol start="7">
+    <li>
+    <p><strong>What are Django signals and how are they used?</strong></p>
+    <ul>
+    <li><strong>Signals</strong> are a way to allow decoupled applications to get notified when certain actions occur elsewhere in your application. For example, you can use signals to execute some code after a model instance is saved or deleted.</li>
+    </ul>
+    </li>
+    <li>
+    <p><strong>How do you implement user authentication in Django?</strong></p>
+    <ul>
+    <li>Django provides a built-in authentication system. You can use <code>django.contrib.auth</code> for user authentication, which includes views for login, logout, password change, and password reset. You can also customize the user model and authentication backend.</li>
+    </ul>
+    </li>
+    <li>
+    <p><strong>What are Django middleware and how do they work?</strong></p>
+    <ul>
+    <li><strong>Middleware</strong> is a way to process requests globally before they reach the view or after the view has processed them. Middleware components are executed in a defined order during the request and response phases.</li>
+    </ul>
+    </li>
+    </ol>
+    <h3>Practical Questions</h3>
+    <ol start="10">
+    <li>
+    <p><strong>How do you optimize a Django application for performance?</strong></p>
+    <ul>
+    <li><strong>Performance Optimization</strong> strategies include:
+    <ul>
+    <li><strong>Database Indexing</strong>: Add indexes to database tables.</li>
+    <li><strong>Caching</strong>: Use Django’s caching framework.</li>
+    <li><strong>Query Optimization</strong>: Optimize database queries.</li>
+    <li><strong>Load Balancing</strong>: Distribute traffic across multiple servers.</li>
+    <li><strong>Static Files</strong>: Serve static files using a web server like Nginx.</li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li>
+    <p><strong>How do you handle file uploads in Django?</strong></p>
+    <ul>
+    <li>To handle file uploads, you need to:
+    <ul>
+    <li>Add a <code>FileField</code> or <code>ImageField</code> to your model.</li>
+    <li>Ensure your form has <code>enctype="multipart/form-data"</code>.</li>
+    <li>Configure your settings to define <code>MEDIA_URL</code> and <code>MEDIA_ROOT</code>.</li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    <li>
+    <p><strong>What are Django’s security features?</strong></p>
+    <ul>
+    <li><strong>Security Features</strong> include:
+    <ul>
+    <li><strong>Cross-Site Scripting (XSS) Protection</strong>: Auto-escaping in templates.</li>
+    <li><strong>Cross-Site Request Forgery (CSRF) Protection</strong>: CSRF tokens in forms.</li>
+    <li><strong>SQL Injection Protection</strong>: ORM prevents SQL injection.</li>
+    <li><strong>Clickjacking Protection</strong>: <code>X-Frame-Options</code> middleware.</li>
+    <li><strong>Secure Password Storage</strong>: Uses PBKDF2 by default.</li>
+    </ul>
+    </li>
+    </ul>
+    </li>
+    </ol>
+    <p>I hope these answers help you prepare for your interview! If you have any more questions or need further clarification, feel free to ask. Good luck! 😊</p>
+    </div></div>
+    <!-- _________________ -->
+    <div class="ac-container ac-adaptiveCard" style=""><div class="ac-textBlock" style=""><p><h3>Optimizing a Django application for performance using database indexing involves several steps. Here are some key strategies:</h3></p>
+        <ol>
+        <li>
+        <p><strong>Identify Slow Queries</strong>: Use Django’s query logging to identify slow queries. You can enable query logging by setting <code>DEBUG = True</code> in your settings and using Django Debug Toolbar or similar tools.</p>
+        </li>
+        <li>
+        <p><strong>Add Indexes</strong>: Once you’ve identified slow queries, you can add indexes to the fields that are frequently used in <code>WHERE</code>, <code>ORDER BY</code>, and <code>JOIN</code> clauses. In Django, you can add indexes using the <code>indexes</code> option in your model’s <code>Meta</code> class. For example:</p>
+        <cib-code-block code-lang="python" clipboard-data="from django.db import models
+        
+        class MyModel(models.Model):
+            my_field = models.CharField(max_length=100)
+        
+            class Meta:
+                indexes = [
+                    models.Index(fields=['my_field']),
+                ]
+        "><pre><code class="language-python"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models
+        
+        <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyModel</span>(models.Model):
+            my_field = models.CharField(max_length=<span class="hljs-number">100</span>)
+        
+            <span class="hljs-keyword">class</span> <span class="hljs-title class_">Meta</span>:
+                indexes = [
+                    models.Index(fields=[<span class="hljs-string">'my_field'</span>]),
+                ]
+        </code></pre>
+        </cib-code-block></li>
+        <li>
+        <p><strong>Use <code>db_index</code></strong>: For individual fields that are frequently queried, you can set <code>db_index=True</code> in the field definition:</p>
+        <cib-code-block code-lang="python" clipboard-data="class MyModel(models.Model):
+            my_field = models.CharField(max_length=100, db_index=True)
+        "><pre><code class="language-python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyModel</span>(models.Model):
+            my_field = models.CharField(max_length=<span class="hljs-number">100</span>, db_index=<span class="hljs-literal">True</span>)
+        </code></pre>
+        </cib-code-block></li>
+        <li>
+        <p><strong>Composite Indexes</strong>: If you often query multiple fields together, consider using composite indexes:</p>
+        <cib-code-block code-lang="python" clipboard-data="class MyModel(models.Model):
+            field1 = models.CharField(max_length=100)
+            field2 = models.CharField(max_length=100)
+        
+            class Meta:
+                indexes = [
+                    models.Index(fields=['field1', 'field2']),
+                ]
+        "><pre><code class="language-python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyModel</span>(models.Model):
+            field1 = models.CharField(max_length=<span class="hljs-number">100</span>)
+            field2 = models.CharField(max_length=<span class="hljs-number">100</span>)
+        
+            <span class="hljs-keyword">class</span> <span class="hljs-title class_">Meta</span>:
+                indexes = [
+                    models.Index(fields=[<span class="hljs-string">'field1'</span>, <span class="hljs-string">'field2'</span>]),
+                ]
+        </code></pre>
+        </cib-code-block></li>
+        <li>
+        <p><strong>Analyze and Optimize Existing Indexes</strong>: Use database tools to analyze the effectiveness of your indexes. Tools like <code>EXPLAIN</code> in SQL can help you understand how queries are executed and whether indexes are being used efficiently.</p>
+        </li>
+        <li>
+        <p><strong>Avoid Over-Indexing</strong>: While indexes can significantly speed up read operations, they can slow down write operations. Be mindful of the trade-offs and avoid adding unnecessary indexes.</p>
+        </li>
+        <li>
+        <p><strong>Database-Specific Indexes</strong>: Some databases offer specific types of indexes (e.g., full-text indexes in PostgreSQL). Utilize these when appropriate for your use case.</p>
+        </li>
+        <li>
+        <p><strong>Regular Maintenance</strong>: Regularly monitor and maintain your indexes. Over time, as your data grows and changes, the effectiveness of indexes can degrade.</p>
+        </li>
+        </ol>
+        <p>By carefully adding and managing indexes, you can significantly improve the performance of your Django application. If you have any specific queries or need further assistance, feel free to ask!</p>
+        </div></div>
+    <div class="ac-container ac-adaptiveCard" style=""><div class="ac-textBlock" style=""><h3><p>Identifying slow queries in a Django application involves a few key steps:</p></h3>
+        <ol>
+        <li>
+        <p><strong>Enable Django Debug Toolbar</strong>: This tool provides detailed information about each request, including SQL queries. To install it:</p>
+        <cib-code-block code-lang="bash" clipboard-data="pip install django-debug-toolbar
+        "><pre><code class="language-bash">pip install django-debug-toolbar
+        </code></pre>
+        </cib-code-block><p>Add it to your <code>INSTALLED_APPS</code> and configure your middleware:</p>
+        <cib-code-block code-lang="python" clipboard-data="INSTALLED_APPS = [
+            ...
+            'debug_toolbar',
+        ]
+        
+        MIDDLEWARE = [
+            ...
+            'debug_toolbar.middleware.DebugToolbarMiddleware',
+        ]
+        "><pre><code class="language-python">INSTALLED_APPS = [
+            ...
+            <span class="hljs-string">'debug_toolbar'</span>,
+        ]
+        
+        MIDDLEWARE = [
+            ...
+            <span class="hljs-string">'debug_toolbar.middleware.DebugToolbarMiddleware'</span>,
+        ]
+        </code></pre>
+        </cib-code-block><p>Then, add the toolbar URLs to your <code>urls.py</code>:</p>
+        <cib-code-block code-lang="python" clipboard-data="from django.conf import settings
+        from django.conf.urls import include, url
+        
+        if settings.DEBUG:
+            import debug_toolbar
+            urlpatterns = [
+                url(r'^__debug__/', include(debug_toolbar.urls)),
+            ] + urlpatterns
+        "><pre><code class="language-python"><span class="hljs-keyword">from</span> django.conf <span class="hljs-keyword">import</span> settings
+        <span class="hljs-keyword">from</span> django.conf.urls <span class="hljs-keyword">import</span> include, url
+        
+        <span class="hljs-keyword">if</span> settings.DEBUG:
+            <span class="hljs-keyword">import</span> debug_toolbar
+            urlpatterns = [
+                url(<span class="hljs-string">r'^__debug__/'</span>, include(debug_toolbar.urls)),
+            ] + urlpatterns
+        </code></pre>
+        </cib-code-block></li>
+        <li>
+        <p><strong>Use Django’s Query Logging</strong>: Set <code>DEBUG = True</code> in your settings to log all SQL queries. This can be useful for development but should be turned off in production.</p>
+        </li>
+        <li>
+        <p><strong>Database Query Profiling</strong>: Use the <code>django.db.connection.queries</code> to log queries. For example:</p>
+        <cib-code-block code-lang="python" clipboard-data="from django.db import connection
+        
+        def my_view(request):
+            # Your view logic here
+            queries = connection.queries
+            for query in queries:
+                print(query)
+        "><pre><code class="language-python"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> connection
+        
+        <span class="hljs-keyword">def</span> <span class="hljs-title function_">my_view</span>(<span class="hljs-params">request</span>):
+            <span class="hljs-comment"># Your view logic here</span>
+            queries = connection.queries
+            <span class="hljs-keyword">for</span> query <span class="hljs-keyword">in</span> queries:
+                <span class="hljs-built_in">print</span>(query)
+        </code></pre>
+        </cib-code-block></li>
+        <li>
+        <p><strong>Third-Party Tools</strong>: Tools like New Relic or Datadog can provide more advanced monitoring and profiling of your database queries in production environments.</p>
+        </li>
+        <li>
+        <p><strong>Database-Specific Tools</strong>: Use database-specific tools like <code>EXPLAIN</code> in PostgreSQL or MySQL to analyze how queries are executed and identify bottlenecks.</p>
+        </li>
+        </ol>
+        <p>By using these methods, you can effectively identify and analyze slow queries in your Django application. If you need further assistance with any of these steps, feel free to ask!</p>
+        </div></div>
+        <div class="ac-container ac-adaptiveCard" style=""><div class="ac-textBlock" style=""><p><h1>Sure, here are detailed answers to the advanced Django questions:</h1></p>
+            <h3>1. How do you implement custom user models in Django?</h3>
+            <p>To implement a custom user model in Django, follow these steps:</p>
+            <ol>
+            <li>
+            <p><strong>Create a Custom User Model</strong>:</p>
+            <ul>
+            <li>Define a new user model by subclassing <code>AbstractBaseUser</code> and <code>PermissionsMixin</code>.</li>
+            <li>Implement the required fields and methods.</li>
+            </ul>
+            <cib-code-block code-lang="python" clipboard-data="from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+            from django.db import models
+            
+            class CustomUserManager(BaseUserManager):
+                def create_user(self, email, password=None, **extra_fields):
+                    if not email:
+                        raise ValueError('The Email field must be set')
+                    email = self.normalize_email(email)
+                    user = self.model(email=email, **extra_fields)
+                    user.set_password(password)
+                    user.save(using=self._db)
+                    return user
+            
+                def create_superuser(self, email, password=None, **extra_fields):
+                    extra_fields.setdefault('is_staff', True)
+                    extra_fields.setdefault('is_superuser', True)
+                    return self.create_user(email, password, **extra_fields)
+            
+            class CustomUser(AbstractBaseUser, PermissionsMixin):
+                email = models.EmailField(unique=True)
+                first_name = models.CharField(max_length=30)
+                last_name = models.CharField(max_length=30)
+                is_active = models.BooleanField(default=True)
+                is_staff = models.BooleanField(default=False)
+            
+                objects = CustomUserManager()
+            
+                USERNAME_FIELD = 'email'
+                REQUIRED_FIELDS = ['first_name', 'last_name']
+            
+                def __str__(self):
+                    return self.email
+            "><pre><code class="language-python"><span class="hljs-keyword">from</span> django.contrib.auth.models <span class="hljs-keyword">import</span> AbstractBaseUser, BaseUserManager, PermissionsMixin
+            <span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> models
+            
+            <span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomUserManager</span>(<span class="hljs-title class_ inherited__">BaseUserManager</span>):
+                <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_user</span>(<span class="hljs-params">self, email, password=<span class="hljs-literal">None</span>, **extra_fields</span>):
+                    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> email:
+                        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">'The Email field must be set'</span>)
+                    email = self.normalize_email(email)
+                    user = self.model(email=email, **extra_fields)
+                    user.set_password(password)
+                    user.save(using=self._db)
+                    <span class="hljs-keyword">return</span> user
+            
+                <span class="hljs-keyword">def</span> <span class="hljs-title function_">create_superuser</span>(<span class="hljs-params">self, email, password=<span class="hljs-literal">None</span>, **extra_fields</span>):
+                    extra_fields.setdefault(<span class="hljs-string">'is_staff'</span>, <span class="hljs-literal">True</span>)
+                    extra_fields.setdefault(<span class="hljs-string">'is_superuser'</span>, <span class="hljs-literal">True</span>)
+                    <span class="hljs-keyword">return</span> self.create_user(email, password, **extra_fields)
+            
+            <span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomUser</span>(AbstractBaseUser, PermissionsMixin):
+                email = models.EmailField(unique=<span class="hljs-literal">True</span>)
+                first_name = models.CharField(max_length=<span class="hljs-number">30</span>)
+                last_name = models.CharField(max_length=<span class="hljs-number">30</span>)
+                is_active = models.BooleanField(default=<span class="hljs-literal">True</span>)
+                is_staff = models.BooleanField(default=<span class="hljs-literal">False</span>)
+            
+                objects = CustomUserManager()
+            
+                USERNAME_FIELD = <span class="hljs-string">'email'</span>
+                REQUIRED_FIELDS = [<span class="hljs-string">'first_name'</span>, <span class="hljs-string">'last_name'</span>]
+            
+                <span class="hljs-keyword">def</span> <span class="hljs-title function_">__str__</span>(<span class="hljs-params">self</span>):
+                    <span class="hljs-keyword">return</span> self.email
+            </code></pre>
+            </cib-code-block></li>
+            <li>
+            <p><strong>Update Settings</strong>:</p>
+            <ul>
+            <li>Update the <code>AUTH_USER_MODEL</code> setting in <code>settings.py</code> to point to your custom user model.</li>
+            </ul>
+            <cib-code-block code-lang="python" clipboard-data="AUTH_USER_MODEL = 'yourapp.CustomUser'
+            "><pre><code class="language-python">AUTH_USER_MODEL = <span class="hljs-string">'yourapp.CustomUser'</span>
+            </code></pre>
+            </cib-code-block></li>
+            <li>
+            <p><strong>Create and Apply Migrations</strong>:</p>
+            <ul>
+            <li>Run <code>python manage.py makemigrations</code> and <code>python manage.py migrate</code> to create and apply the necessary database migrations.</li>
+            </ul>
+            </li>
+            <li>
+            <p><strong>Update Admin Configuration</strong>:</p>
+            <ul>
+            <li>Register the custom user model in the admin site.</li>
+            </ul>
+            <cib-code-block code-lang="python" clipboard-data="from django.contrib import admin
+            from django.contrib.auth.admin import UserAdmin
+            from .models import CustomUser
+            
+            class CustomUserAdmin(UserAdmin):
+                model = CustomUser
+                list_display = ('email', 'first_name', 'last_name', 'is_staff')
+                search_fields = ('email', 'first_name', 'last_name')
+                ordering = ('email',)
+            
+            admin.site.register(CustomUser, CustomUserAdmin)
+            "><pre><code class="language-python"><span class="hljs-keyword">from</span> django.contrib <span class="hljs-keyword">import</span> admin
+            <span class="hljs-keyword">from</span> django.contrib.auth.admin <span class="hljs-keyword">import</span> UserAdmin
+            <span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> CustomUser
+            
+            <span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomUserAdmin</span>(<span class="hljs-title class_ inherited__">UserAdmin</span>):
+                model = CustomUser
+                list_display = (<span class="hljs-string">'email'</span>, <span class="hljs-string">'first_name'</span>, <span class="hljs-string">'last_name'</span>, <span class="hljs-string">'is_staff'</span>)
+                search_fields = (<span class="hljs-string">'email'</span>, <span class="hljs-string">'first_name'</span>, <span class="hljs-string">'last_name'</span>)
+                ordering = (<span class="hljs-string">'email'</span>,)
+            
+            admin.site.register(CustomUser, CustomUserAdmin)
+            </code></pre>
+            </cib-code-block></li>
+            </ol>
+            <h3>2. Explain Django’s class-based views (CBVs) and their advantages.</h3>
+            <p><strong>Class-based views (CBVs)</strong> in Django allow you to define views as classes instead of functions. This provides several advantages:</p>
+            <ul>
+            <li><strong>Reusability</strong>: CBVs promote code reuse by allowing you to create reusable view components.</li>
+            <li><strong>Extensibility</strong>: You can extend and customize CBVs by subclassing and overriding methods.</li>
+            <li><strong>Organization</strong>: CBVs help organize code better, especially for complex views with multiple methods.</li>
+            </ul>
+            <p>Example of a CBV:</p>
+            <cib-code-block code-lang="python" clipboard-data="from django.views import View
+            from django.http import HttpResponse
+            
+            class MyView(View):
+                def get(self, request):
+                    return HttpResponse('Hello, World!')
+            "><pre><code class="language-python"><span class="hljs-keyword">from</span> django.views <span class="hljs-keyword">import</span> View
+            <span class="hljs-keyword">from</span> django.http <span class="hljs-keyword">import</span> HttpResponse
+            
+            <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyView</span>(<span class="hljs-title class_ inherited__">View</span>):
+                <span class="hljs-keyword">def</span> <span class="hljs-title function_">get</span>(<span class="hljs-params">self, request</span>):
+                    <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">'Hello, World!'</span>)
+            </code></pre>
+            </cib-code-block><h3>3. What are Django’s generic views and how do you use them?</h3>
+            <p><strong>Generic views</strong> are pre-built views provided by Django to handle common patterns like displaying a list of objects, handling forms, etc. They simplify the process of writing views by reducing boilerplate code.</p>
+            <p>Example of a generic view:</p>
+            <cib-code-block code-lang="python" clipboard-data="from django.views.generic import ListView
+            from .models import MyModel
+            
+            class MyModelListView(ListView):
+                model = MyModel
+                template_name = 'myapp/mymodel_list.html'
+                context_object_name = 'mymodels'
+            "><pre><code class="language-python"><span class="hljs-keyword">from</span> django.views.generic <span class="hljs-keyword">import</span> ListView
+            <span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> MyModel
+            
+            <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyModelListView</span>(<span class="hljs-title class_ inherited__">ListView</span>):
+                model = MyModel
+                template_name = <span class="hljs-string">'myapp/mymodel_list.html'</span>
+                context_object_name = <span class="hljs-string">'mymodels'</span>
+            </code></pre>
+            </cib-code-block><h3>4. How do you handle asynchronous tasks in Django?</h3>
+            <p>To handle asynchronous tasks in Django, you can use <strong>Celery</strong> or <strong>Django Channels</strong>.</p>
+            <ul>
+            <li>
+            <p><strong>Celery</strong>: A distributed task queue that allows you to run tasks asynchronously.</p>
+            <cib-code-block code-lang="python" clipboard-data="# tasks.py
+            from celery import shared_task
+            
+            @shared_task
+            def add(x, y):
+                return x + y
+            "><pre><code class="language-python"><span class="hljs-comment"># tasks.py</span>
+            <span class="hljs-keyword">from</span> celery <span class="hljs-keyword">import</span> shared_task
+            
+            <span class="hljs-meta">@shared_task</span>
+            <span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">x, y</span>):
+                <span class="hljs-keyword">return</span> x + y
+            </code></pre>
+            </cib-code-block><cib-code-block code-lang="python" clipboard-data="# views.py
+            from .tasks import add
+            
+            def my_view(request):
+                result = add.delay(4, 4)
+                return HttpResponse(f'Task result: {result.get()}')
+            "><pre><code class="language-python"><span class="hljs-comment"># views.py</span>
+            <span class="hljs-keyword">from</span> .tasks <span class="hljs-keyword">import</span> add
+            
+            <span class="hljs-keyword">def</span> <span class="hljs-title function_">my_view</span>(<span class="hljs-params">request</span>):
+                result = add.delay(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>)
+                <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">f'Task result: <span class="hljs-subst">{result.get()}</span>'</span>)
+            </code></pre>
+            </cib-code-block></li>
+            <li>
+            <p><strong>Django Channels</strong>: Extends Django to handle WebSockets, HTTP2, and other protocols.</p>
+            <cib-code-block code-lang="python" clipboard-data="# consumers.py
+            from channels.generic.websocket import WebsocketConsumer
+            
+            class MyConsumer(WebsocketConsumer):
+                def connect(self):
+                    self.accept()
+                    self.send(text_data=&quot;Hello, WebSocket!&quot;)
+            "><pre><code class="language-python"><span class="hljs-comment"># consumers.py</span>
+            <span class="hljs-keyword">from</span> channels.generic.websocket <span class="hljs-keyword">import</span> WebsocketConsumer
+            
+            <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyConsumer</span>(<span class="hljs-title class_ inherited__">WebsocketConsumer</span>):
+                <span class="hljs-keyword">def</span> <span class="hljs-title function_">connect</span>(<span class="hljs-params">self</span>):
+                    self.accept()
+                    self.send(text_data=<span class="hljs-string">"Hello, WebSocket!"</span>)
+            </code></pre>
+            </cib-code-block></li>
+            </ul>
+            <h3>5. What is Django REST framework (DRF) and how do you use it?</h3>
+            <p><strong>Django REST framework (DRF)</strong> is a powerful toolkit for building Web APIs in Django. It provides serializers, views, and routers to create APIs quickly.</p>
+            <p>Example of a simple API:</p>
+            <cib-code-block code-lang="python" clipboard-data="# serializers.py
+            from rest_framework import serializers
+            from .models import MyModel
+            
+            class MyModelSerializer(serializers.ModelSerializer):
+                class Meta:
+                    model = MyModel
+                    fields = '__all__'
+            "><pre><code class="language-python"><span class="hljs-comment"># serializers.py</span>
+            <span class="hljs-keyword">from</span> rest_framework <span class="hljs-keyword">import</span> serializers
+            <span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> MyModel
+            
+            <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyModelSerializer</span>(serializers.ModelSerializer):
+                <span class="hljs-keyword">class</span> <span class="hljs-title class_">Meta</span>:
+                    model = MyModel
+                    fields = <span class="hljs-string">'__all__'</span>
+            </code></pre>
+            </cib-code-block><cib-code-block code-lang="python" clipboard-data="# views.py
+            from rest_framework import viewsets
+            from .models import MyModel
+            from .serializers import MyModelSerializer
+            
+            class MyModelViewSet(viewsets.ModelViewSet):
+                queryset = MyModel.objects.all()
+                serializer_class = MyModelSerializer
+            "><pre><code class="language-python"><span class="hljs-comment"># views.py</span>
+            <span class="hljs-keyword">from</span> rest_framework <span class="hljs-keyword">import</span> viewsets
+            <span class="hljs-keyword">from</span> .models <span class="hljs-keyword">import</span> MyModel
+            <span class="hljs-keyword">from</span> .serializers <span class="hljs-keyword">import</span> MyModelSerializer
+            
+            <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyModelViewSet</span>(viewsets.ModelViewSet):
+                queryset = MyModel.objects.<span class="hljs-built_in">all</span>()
+                serializer_class = MyModelSerializer
+            </code></pre>
+            </cib-code-block><cib-code-block code-lang="python" clipboard-data="# urls.py
+            from rest_framework.routers import DefaultRouter
+            from .views import MyModelViewSet
+            
+            router = DefaultRouter()
+            router.register(r'mymodels', MyModelViewSet)
+            
+            urlpatterns = router.urls
+            "><pre><code class="language-python"><span class="hljs-comment"># urls.py</span>
+            <span class="hljs-keyword">from</span> rest_framework.routers <span class="hljs-keyword">import</span> DefaultRouter
+            <span class="hljs-keyword">from</span> .views <span class="hljs-keyword">import</span> MyModelViewSet
+            
+            router = DefaultRouter()
+            router.register(<span class="hljs-string">r'mymodels'</span>, MyModelViewSet)
+            
+            urlpatterns = router.urls
+            </code></pre>
+            </cib-code-block><h3>6. How do you implement caching in Django?</h3>
+            <p>Django provides several caching strategies:</p>
+            <ul>
+            <li>
+            <p><strong>Per-site caching</strong>: Caches the entire site.</p>
+            <cib-code-block code-lang="python" clipboard-data="# settings.py
+            CACHES = {
+                'default': {
+                    'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+                    'LOCATION': '127.0.0.1:11211',
+                }
+            }
+            
+            # middleware.py
+            MIDDLEWARE = [
+                'django.middleware.cache.UpdateCacheMiddleware',
+                'django.middleware.common.CommonMiddleware',
+                'django.middleware.cache.FetchFromCacheMiddleware',
+            ]
+            "><pre><code class="language-python"><span class="hljs-comment"># settings.py</span>
+            CACHES = {
+                <span class="hljs-string">'default'</span>: {
+                    <span class="hljs-string">'BACKEND'</span>: <span class="hljs-string">'django.core.cache.backends.memcached.MemcachedCache'</span>,
+                    <span class="hljs-string">'LOCATION'</span>: <span class="hljs-string">'127.0.0.1:11211'</span>,
+                }
+            }
+            
+            <span class="hljs-comment"># middleware.py</span>
+            MIDDLEWARE = [
+                <span class="hljs-string">'django.middleware.cache.UpdateCacheMiddleware'</span>,
+                <span class="hljs-string">'django.middleware.common.CommonMiddleware'</span>,
+                <span class="hljs-string">'django.middleware.cache.FetchFromCacheMiddleware'</span>,
+            ]
+            </code></pre>
+            </cib-code-block></li>
+            <li>
+            <p><strong>Per-view caching</strong>: Caches individual views.</p>
+            <cib-code-block code-lang="python" clipboard-data="from django.views.decorators.cache import cache_page
+            
+            @cache_page(60 * 15)
+            def my_view(request):
+                ...
+            "><pre><code class="language-python"><span class="hljs-keyword">from</span> django.views.decorators.cache <span class="hljs-keyword">import</span> cache_page
+            
+            <span class="hljs-meta">@cache_page(<span class="hljs-params"><span class="hljs-number">60</span> * <span class="hljs-number">15</span></span>)</span>
+            <span class="hljs-keyword">def</span> <span class="hljs-title function_">my_view</span>(<span class="hljs-params">request</span>):
+                ...
+            </code></pre>
+            </cib-code-block></li>
+            <li>
+            <p><strong>Low-level caching</strong>: Manually cache specific data.</p>
+            <cib-code-block code-lang="python" clipboard-data="from django.core.cache import cache
+            
+            def my_view(request):
+                data = cache.get('my_key')
+                if not data:
+                    data = expensive_operation()
+                    cache.set('my_key', data, 60 * 15)
+                return HttpResponse(data)
+            "><pre><code class="language-python"><span class="hljs-keyword">from</span> django.core.cache <span class="hljs-keyword">import</span> cache
+            
+            <span class="hljs-keyword">def</span> <span class="hljs-title function_">my_view</span>(<span class="hljs-params">request</span>):
+                data = cache.get(<span class="hljs-string">'my_key'</span>)
+                <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> data:
+                    data = expensive_operation()
+                    cache.<span class="hljs-built_in">set</span>(<span class="hljs-string">'my_key'</span>, data, <span class="hljs-number">60</span> * <span class="hljs-number">15</span>)
+                <span class="hljs-keyword">return</span> HttpResponse(data)
+            </code></pre>
+            </cib-code-block></li>
+            </ul>
+            <h3>7. What are Django’s signals and how do you create custom signals?</h3>
+            <p><strong>Signals</strong> allow decoupled applications to get notified when certain actions occur. Django provides several built-in signals, and you can create custom signals.</p>
+            <p>Example of a custom signal:</p>
+            <cib-code-block code-lang="python" clipboard-data="# signals.py
+            from django.dispatch import Signal
+            
+            my_signal = Signal(providing_args=[&quot;arg1&quot;, &quot;arg2&quot;])
+            
+            # receivers.py
+            from django.dispatch import receiver
+            from .signals import my_signal
+            
+            @receiver(my_signal)
+            def my_signal_receiver(sender, **kwargs):
+                print(f&quot;Received signal with args: {kwargs}&quot;)
+            
+            # views.py
+            from .signals import my_signal
+            
+            def my_view(request):
+                my_signal.send(sender=None, arg1=&quot;value1&quot;, arg2=&quot;value2&quot;)
+                return HttpResponse(&quot;Signal sent&quot;)
+            "><pre><code class="language-python"><span class="hljs-comment"># signals.py</span>
+            <span class="hljs-keyword">from</span> django.dispatch <span class="hljs-keyword">import</span> Signal
+            
+            my_signal = Signal(providing_args=[<span class="hljs-string">"arg1"</span>, <span class="hljs-string">"arg2"</span>])
+            
+            <span class="hljs-comment"># receivers.py</span>
+            <span class="hljs-keyword">from</span> django.dispatch <span class="hljs-keyword">import</span> receiver
+            <span class="hljs-keyword">from</span> .signals <span class="hljs-keyword">import</span> my_signal
+            
+            <span class="hljs-meta">@receiver(<span class="hljs-params">my_signal</span>)</span>
+            <span class="hljs-keyword">def</span> <span class="hljs-title function_">my_signal_receiver</span>(<span class="hljs-params">sender, **kwargs</span>):
+                <span class="hljs-built_in">print</span>(<span class="hljs-string">f"Received signal with args: <span class="hljs-subst">{kwargs}</span>"</span>)
+            
+            <span class="hljs-comment"># views.py</span>
+            <span class="hljs-keyword">from</span> .signals <span class="hljs-keyword">import</span> my_signal
+            
+            <span class="hljs-keyword">def</span> <span class="hljs-title function_">my_view</span>(<span class="hljs-params">request</span>):
+                my_signal.send(sender=<span class="hljs-literal">None</span>, arg1=<span class="hljs-string">"value1"</span>, arg2=<span class="hljs-string">"value2"</span>)
+                <span class="hljs-keyword">return</span> HttpResponse(<span class="hljs-string">"Signal sent"</span>)
+            </code></pre>
+            </cib-code-block><h3>8. How do you secure a Django application?</h3>
+            <p>To secure a Django application, follow these best practices:</p>
+            <ul>
+            <li><strong>Use HTTPS</strong>: Ensure all communication is encrypted.</li>
+            <li><strong>Set Secure Cookies</strong>: Use <code>SESSION_COOKIE_SECURE</code> and <code>CSRF_COOKIE_SECURE</code>.</li>
+            <li><strong>Use Django’s Security Middleware</strong>: Enable <code>SecurityMiddleware</code>.</li>
+            <li><strong>Manage User Permissions</strong>: Use Django’s built-in permissions and groups.</li>
+            <li><strong>Validate User Input</strong>: Always validate and sanitize user input.</li>
+            <li><strong>Use Strong Passwords</strong>: Enforce strong password policies.</li>
+            <li><strong>Keep Django Updated</strong>: Regularly update Django to the latest version.</li>
+            </ul>
+            <h3>9. Explain the concept of middleware in Django and how to create custom middleware.</h3>
+            <p><strong>Middleware</strong> is a way to process requests globally before they reach the view or after the view has processed them. Middleware components are executed in a defined order during the request and response phases.</p>
+            <p>Example of custom middleware:</p>
+            <cib-code-block code-lang="python" clipboard-data="# middleware.py
+            class MyCustomMiddleware:
+                def __init__(self, get_response):
+                    self.get_response = get_response
+            
+                def __call__(self, request):
+                    # Code to execute for each request before the view (and later middleware) are called.
+                    response = self.get_response(request)
+                    # Code to execute for each request/response after the view is called.
+                    return response
+            
+            # settings.py
+            MIDDLEWARE = [
+                ...
+                'myapp.middleware.MyCustomMiddleware',
+                ...
+            ]
+            "><pre><code class="language-python"><span class="hljs-comment"># middleware.py</span>
+            <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyCustomMiddleware</span>:
+                <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, get_response</span>):
+                    self.get_response = get_response
+            
+                <span class="hljs-keyword">def</span> <span class="hljs-title function_">__call__</span>(<span class="hljs-params">self, request</span>):
+                    <span class="hljs-comment"># Code to execute for each request before the view (and later middleware) are called.</span>
+                    response = self.get_response(request)
+                    <span class="hljs-comment"># Code to execute for each request/response after the view is called.</span>
+                    <span class="hljs-keyword">return</span> response
+            
+            <span class="hljs-comment"># settings.py</span>
+            MIDDLEWARE = [
+                ...
+                <span class="hljs-string">'myapp.middleware.MyCustomMiddleware'</span>,
+                ...
+            ]
+            </code></pre>
+            </cib-code-block><h3>10. How do you handle database transactions in Django?</h3>
+            <p>Django provides transaction management to ensure data integrity. Use <code>atomic</code> blocks to wrap code that should be executed within a transaction.</p>
+            <p>Example:</p>
+            <cib-code-block code-lang="python" clipboard-data="from django.db import transaction
+            
+            def my_view(request):
+                with transaction.atomic():
+                    # All operations within this block are part of a single transaction.
+                    obj1.save"><pre><code class="language-python"><span class="hljs-keyword">from</span> django.db <span class="hljs-keyword">import</span> transaction
+            
+            <span class="hljs-keyword">def</span> <span class="hljs-title function_">my_view</span>(<span class="hljs-params">request</span>):
+                <span class="hljs-keyword">with</span> transaction.atomic():
+                    <span class="hljs-comment"># All operations within this block are part of a single transaction.</span>
+                    obj1.save</code></pre>
+            </cib-code-block></div></div>

@@ -1,0 +1,34 @@
+<!-- templates/your_app/log_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Logs</title>
+</head>
+<body>
+    <h1>Change Logs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Model</th>
+                <th>Object ID</th>
+                <th>Action</th>
+                <th>Timestamp</th>
+                <th>Changes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.user }}</td>
+                <td>{{ log.model_name }}</td>
+                <td>{{ log.object_id }}</td>
+                <td>{{ log.action }}</td>
+                <td>{{ log.timestamp }}</td>
+                <td>{{ log.changes }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

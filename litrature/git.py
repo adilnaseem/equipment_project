@@ -135,3 +135,15 @@ By following these steps, you can effectively manage your Django project with Gi
 
 Let me know if you need more detailed instructions on any specific part or additional features!
 
+#----------------------
+# Stage all changes
+git add .
+
+# Commit with a message
+git commit -m "Updated the user authentication module"
+
+# Pull the latest changes from remote
+git pull origin master
+
+# Push your changes to the remote repository
+git push origin master

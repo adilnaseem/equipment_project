@@ -147,3 +147,7 @@ git pull origin master
 
 # Push your changes to the remote repository
 git push origin master
+----
+git add .
+git commit -m "Updateing the changes if any."
+git push origin master

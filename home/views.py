@@ -16,23 +16,25 @@ from rest_framework import viewsets
 #Query speed check
 from django.db import connection
 #------------Celery----------start
-# from django.http import JsonResponse
-# from .tasks import add
-# from celery.result import AsyncResult
-# def trigger_task(request):
-#     result = add.delay(4, 4)
-#     return JsonResponse({'task_id': result.id})
+from django.http import JsonResponse
+from .tasks import add
+from celery.result import AsyncResult
+def trigger_task(request):
+    result = add.delay(4, 4)
+    return JsonResponse({'task_id': result.id})
 
+def index(request):
+    result = add.delay(4, 4)
+    return HttpResponse(f'Task result: {result.get()}')
 
-
-# def get_task_status(request, task_id):
-#     result = AsyncResult(task_id)
-#     response_data = {
-#         'task_id': task_id,
-#         'status': result.status,
-#         'result': result.result if result.ready() else None
-#     }
-#     return JsonResponse(response_data)
+def get_task_status(request, task_id):
+    result = AsyncResult(task_id)
+    response_data = {
+        'task_id': task_id,
+        'status': result.status,
+        'result': result.result if result.ready() else None
+    }
+    return JsonResponse(response_data)
 #------------Celery----------end
 @method_decorator(login_required, name='dispatch')
 class EmployeeView(TemplateView):
@@ -65,13 +67,14 @@ from . import forms
 
 from django.template import loader
 from django.utils.html import format_html
-def home(request):
-    return render(request,template_name='home.html')
+
 
 #'manufacturer', 'made_in', 'serial_no', 'type__title', 'title', 'model', 'status__title',  'date_of_manufacturing', 'place_of_installation__sector','place_of_installation__duty_point', 'description'
 # @method_decorator(login_required)
 from django.views.generic import ListView
 def home(request):
+    result = add.delay(10, 4)
+    print(result)
     new_dic={}
     hand_dic={}
     hold_dic={}
@@ -93,7 +96,7 @@ def home(request):
             hold_dic[x1['status__title']]=1
         elif x1['status__title'] in hold_dic:
             hold_dic[x1['status__title']]=1+hold_dic[x1['status__title']]
-        print(hold_dic)
+        # print(hold_dic)
     hold_categories = list(hold_dic.keys())
     hold_values = list(hold_dic.values())
     # print(hold_data)

@@ -68,6 +68,7 @@ Open a terminal and navigate to your Django project directory. Then, run the Cel
 
 
 celery -A myproject worker --loglevel=info
+celery -A myapp worker -l info
 Step 6: Call the Celery Task
 You can now call the Celery task from anywhere in your Django code. For example, in a view:
 

@@ -13,9 +13,7 @@ If you have a modern Django project layout like:
 then the recommended way is to create a new proj/proj/celery.py module that defines the Celery instance:
 #---------- file:  proj/proj/celery.py---------start
 import os
-
 from celery import Celery
-
 # Set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
 
@@ -46,3 +44,13 @@ proj/proj/__init__.py:
 from .celery import app as celery_app
 
 __all__ = ('celery_app',)
+
+#------------------- end
+
+#-----------settings.py---start
+...
+
+# Celery Configuration Options
+CELERY_TIMEZONE = "Australia/Tasmania"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60

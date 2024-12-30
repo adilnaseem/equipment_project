@@ -15,6 +15,20 @@ from rest_framework import viewsets
 
 #Query speed check
 from django.db import connection
+
+from django.http import HttpResponse
+from .tasks import send_email_task
+
+def send_email_view(request):
+    subject = 'Subject here'
+    message = 'Here is the message.'
+    from_email = 'from@example.com'
+    recipient_list = ['adilnaseempk@yahoo.com',]
+    
+    # Call the task asynchronously
+    send_email_task.delay(subject, message, from_email, recipient_list)
+    
+    return HttpResponse('Email has been sent!')
 #------------Celery----------start
 from django.http import JsonResponse
 from .tasks import add

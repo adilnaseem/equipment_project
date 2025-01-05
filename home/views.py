@@ -15,6 +15,16 @@ from rest_framework import viewsets
 
 #Query speed check
 from django.db import connection
+
+from django.core.mail import send_mail
+
+def send_test_email(request):
+    subject = 'Test Email'
+    message = 'This is a test email sent from Django.'
+    email_from = 'adilnaseem.pak@gmail.com'
+    recipient_list = ['adilnaseem.pak@gmail.com',]
+    send_mail(subject, message, email_from, recipient_list)
+    return HttpResponse('Email sent successfully!')
 #------------Celery----------start
 from django.http import JsonResponse
 from .tasks import add

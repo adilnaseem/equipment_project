@@ -11,6 +11,7 @@ router.register('eqpttype',views.EqptTypeViewSet)
 handler403 = 'home.views.custom_permission_denied_view'
 # urlpatterns
 urlpatterns = [
+    path('send-email/', views.send_test_email, name='send-email'),
     path('',views.home, name='home'),
     path('eqp/',views.eqp, name='eqp'),
     path('eqp/details/<int:id>',views.eqp_details,name='details'),

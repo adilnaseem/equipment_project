@@ -54,3 +54,14 @@ __all__ = ('celery_app',)
 CELERY_TIMEZONE = "Australia/Tasmania"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+
+Starting the worker
+$ celery -A myapp worker -l INFO
+
+Running a task
+$ python ./manage.py shell
+>>> from home.tasks import add, mul, xsum
+>>> res = add.delay_on_commit(2, 3)
+>>> res.get()
+5

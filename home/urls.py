@@ -12,6 +12,7 @@ handler403 = 'home.views.custom_permission_denied_view'
 # urlpatterns
 urlpatterns = [
     path('',views.home, name='home'),
+    path('send-email/', views.send_test_email, name='send-email'),
     path('eqp/',views.eqp, name='eqp'),
     path('eqp/details/<int:id>',views.eqp_details,name='details'),
     path('eqp/details/<int:id>/edit/', views.equipment_update, name='equipment_update'),

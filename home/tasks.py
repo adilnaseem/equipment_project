@@ -1,12 +1,16 @@
 # myapp/tasks.py
-
+"""
+celery -A myapp worker --loglevel=info
+celery -A myapp worker --pool=solo -l info
+celery -A myapp beat --loglevel=info
+"""
 from celery import shared_task
 from django.core.mail import send_mail
 from celery import shared_task
 from django.core.mail import send_mail
 from django.utils import timezone
-from models import Equipment
-import models
+from . import models
+# import models
 @shared_task
 def send_daily_eqpt_report():
     today = timezone.now().date()

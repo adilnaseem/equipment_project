@@ -1,7 +1,6 @@
 # myapp/tasks.py
 """
-celery -A myapp worker --loglevel=info
-celery -A myapp worker --pool=solo -l info
+celery -A myapp worker --loglevel=info    OR    celery -A myapp worker --pool=solo -l info
 celery -A myapp beat --loglevel=info
 """
 from celery import shared_task

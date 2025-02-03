@@ -411,6 +411,7 @@ from . import serializers
 #         return Response(serializer.data)
 #     #-----===========================================
 from rest_framework import viewsets, permissions
+from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Equipment
 from .serializers import EquipmentSerializer
@@ -420,7 +421,7 @@ class ItemViewSet(viewsets.ModelViewSet):
     serializer_class = EquipmentSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = EquipmentFilter
-    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated, TokenHasReadWriteScope]
 class EqptTypeViewSet(viewsets.ModelViewSet):
     queryset = models.EqptType.objects.all()
     serializer_class = serializers.EquipmentTypeSerializer

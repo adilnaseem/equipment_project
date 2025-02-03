@@ -30,6 +30,7 @@ urlpatterns = [
     path('search/', views.search_view, name='search_view'),
     path('search/results/', views.search_results_view, name='search_results_view'),
     path('api/',include(router.urls)),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     # path('apipost/',views..apiPost,name = 'apipost'),
     path('hello/', TemplateView.as_view(template_name='employees.html')),
     path('hello-webpack/', TemplateView.as_view(template_name='hello_webpack.html')),

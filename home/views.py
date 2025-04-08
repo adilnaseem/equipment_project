@@ -13,6 +13,24 @@ from django.views.generic.base import TemplateView
 from . import models,serializers
 from rest_framework import viewsets
 
+
+### Token Authentication
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.status import HTTP_401_UNAUTHORIZED
+from rest_framework.authtoken.models import Token
+@api_view(["POST"])
+def login(request):
+    username = request.data.get("username")
+    password = request.data.get("password")
+ 
+    user = authenticate(username=username, password=password)
+    if not user:
+        return Response({"error": "Login failed"}, status=HTTP_401_UNAUTHORIZED)
+ 
+    token, _ = Token.objects.get_or_create(user=user)
+    return Response({"token": token.key})
+
 #Query speed check
 from django.db import connection
 
@@ -83,76 +101,77 @@ from django.utils.html import format_html
 # @method_decorator(login_required)
 from django.views.generic import ListView
 def home(request):
-    result = add.delay(10, 4)
-    print(result)
-    new_dic={}
-    hand_dic={}
-    hold_dic={}
-    data = models.Equipment.objects.values( 'status__title','model','type__title')
-    hand_data = models.Equipment.objects.filter(type__title__icontains='Hand').values( 'status__title')
-    hold_data = models.Equipment.objects.filter(type__title__icontains='Hold').values( 'status__title')
-    # print((hold_data))
-    for x in hand_data:
-        if x['status__title'] not in hand_dic:
-            hand_dic[x['status__title']]=1
-        elif x['status__title'] in hand_dic:
-            hand_dic[x['status__title']]=1+hand_dic[x['status__title']]
-    hand_categories = list(hand_dic.keys())
-    hand_values = list(hand_dic.values())
+    
+    # result = add.delay(10, 4)
+    # print(result)
+    # new_dic={}
+    # hand_dic={}
+    # hold_dic={}
+    # data = models.Equipment.objects.values( 'status__title','model','type__title')
+    # hand_data = models.Equipment.objects.filter(type__title__icontains='Hand').values( 'status__title')
+    # hold_data = models.Equipment.objects.filter(type__title__icontains='Hold').values( 'status__title')
+    # # print((hold_data))
+    # for x in hand_data:
+    #     if x['status__title'] not in hand_dic:
+    #         hand_dic[x['status__title']]=1
+    #     elif x['status__title'] in hand_dic:
+    #         hand_dic[x['status__title']]=1+hand_dic[x['status__title']]
+    # hand_categories = list(hand_dic.keys())
+    # hand_values = list(hand_dic.values())
 
-    for x1 in hold_data:
-        # print(x1)
-        if x1['status__title'] not in hold_dic:
-            hold_dic[x1['status__title']]=1
-        elif x1['status__title'] in hold_dic:
-            hold_dic[x1['status__title']]=1+hold_dic[x1['status__title']]
-        # print(hold_dic)
-    hold_categories = list(hold_dic.keys())
-    hold_values = list(hold_dic.values())
-    # print(hold_data)
-    try:
-        for point1 in data:
-            for point in point1:    
-                if point not in new_dic:
-                    new_dic[point] = {}
-                    if point1[point] not in new_dic[point]:
-                        new_dic[point][point1[point]] = 1
-                elif point in new_dic:
+    # for x1 in hold_data:
+    #     # print(x1)
+    #     if x1['status__title'] not in hold_dic:
+    #         hold_dic[x1['status__title']]=1
+    #     elif x1['status__title'] in hold_dic:
+    #         hold_dic[x1['status__title']]=1+hold_dic[x1['status__title']]
+    #     # print(hold_dic)
+    # hold_categories = list(hold_dic.keys())
+    # hold_values = list(hold_dic.values())
+    # # print(hold_data)
+    # try:
+    #     for point1 in data:
+    #         for point in point1:    
+    #             if point not in new_dic:
+    #                 new_dic[point] = {}
+    #                 if point1[point] not in new_dic[point]:
+    #                     new_dic[point][point1[point]] = 1
+    #             elif point in new_dic:
                     
-                    if point1[point] not in new_dic[point]:
-                        new_dic[point][point1[point]] = 1
-                    elif point1[point] in new_dic[point]:
-                        new_dic[point][point1[point]] = new_dic[point][point1[point]]+1
+    #                 if point1[point] not in new_dic[point]:
+    #                     new_dic[point][point1[point]] = 1
+    #                 elif point1[point] in new_dic[point]:
+    #                     new_dic[point][point1[point]] = new_dic[point][point1[point]]+1
     
 
-        new_dic['model']=dict(sorted(new_dic['model'].items(), key=lambda x: x[1], reverse=True))        
+    #     new_dic['model']=dict(sorted(new_dic['model'].items(), key=lambda x: x[1], reverse=True))        
         
-        categories = list(new_dic['status__title'].keys())
+    #     categories = list(new_dic['status__title'].keys())
     
-        values = list(new_dic['status__title'].values())
-        model_categories=list(new_dic['model'].keys())
-        model_values=list(new_dic['model'].values())
-        type_categories = list(new_dic['status__title'].keys())
+    #     values = list(new_dic['status__title'].values())
+    #     model_categories=list(new_dic['model'].keys())
+    #     model_values=list(new_dic['model'].values())
+    #     type_categories = list(new_dic['status__title'].keys())
     
-        values = list(new_dic['status__title'].values())
-    except:
-        categories=[]
-        values=[]
-        model_categories=[]
-        model_values=[]
-    queries = connection.queries
-    # for query in queries:
-        # print(query)
+    #     values = list(new_dic['status__title'].values())
+    # except:
+    #     categories=[]
+    #     values=[]
+    #     model_categories=[]
+    #     model_values=[]
+    # queries = connection.queries
+    # #for query in queries:
+        # #print(query)
     
     return render(request, 'home.html', {
-        'categories': categories,
-        'values': values,
-        'hold_categories': hold_categories,
-        'hold_values': hold_values,
-        'hand_categories': hand_categories,
-        'hand_values': hand_values,
-        'model_categories':model_categories,
-        'model_values':model_values,
+        # 'categories': categories,
+        # 'values': values,
+        # 'hold_categories': hold_categories,
+        # 'hold_values': hold_values,
+        # 'hand_categories': hand_categories,
+        # 'hand_values': hand_values,
+        # 'model_categories':model_categories,
+        # 'model_values':model_values,
     })
 def airport_form(request):
     if request.method == 'POST':
@@ -426,7 +445,17 @@ class EqptTypeViewSet(viewsets.ModelViewSet):
     queryset = models.EqptType.objects.all()
     serializer_class = serializers.EquipmentTypeSerializer
 #///////////////////////////////////////////
-
+@api_view(["POST"])
+def login(request):
+    username = request.data.get("username")
+    password = request.data.get("password")
+ 
+    user = authenticate(username=username, password=password)
+    if not user:
+        return Response({"error": "Login failed"}, status=HTTP_401_UNAUTHORIZED)
+ 
+    token, _ = Token.objects.get_or_create(user=user)
+    return Response({"token": token.key})
 # @api_view(['GET', 'POST'])
 # def snippet_list(request):
 #     """
